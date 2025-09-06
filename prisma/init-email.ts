@@ -16,7 +16,7 @@ async function main() {
   // Créer la configuration email par défaut
   const emailConfig = await prisma.emailConfig.create({
     data: {
-      email: 'contact@fenix-metal.fr', // À remplacer par l'email réel
+      email: 'contact@phenix-ferronnier.fr', // À remplacer par l'email réel
       isActive: true,
     }
   });

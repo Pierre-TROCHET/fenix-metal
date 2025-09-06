@@ -4,7 +4,7 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
 // GET - Récupérer tous les aménagements
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Vérifier l'authentification
     const session = await getServerSession(authOptions);

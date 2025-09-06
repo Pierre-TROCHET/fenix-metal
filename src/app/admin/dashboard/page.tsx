@@ -43,7 +43,7 @@ export default function AdminDashboardPage() {
 
             <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
               <h3 className="text-xl font-semibold text-white mb-4">Aménagements</h3>
-              <p className="text-gray-400 mb-4">Gérez vos projets d'aménagement</p>
+              <p className="text-gray-400 mb-4">Gérez vos projets d&apos;aménagement</p>
               <button 
                 onClick={() => router.push("/admin/dashboard/amenagement")}
                 className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-colors"

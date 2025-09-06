@@ -26,7 +26,6 @@ interface UploadedImage {
 }
 
 export default function AmenagementPage() {
-  const { data: session } = useSession();
   const router = useRouter();
   const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [loading, setLoading] = useState(true);

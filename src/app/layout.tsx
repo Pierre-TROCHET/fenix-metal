@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fenix Metal",
-  description: "Fenix Metal",
+  title: "Phenix Ferronnier",
+  description: "Phenix Ferronnier",
 };
 
 export default function RootLayout({

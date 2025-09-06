@@ -32,7 +32,7 @@ export default function AdminLoginPage() {
           router.push("/admin/dashboard");
         }
       }
-    } catch (error) {
+    } catch {
       setError("Une erreur est survenue");
     } finally {
       setLoading(false);
@@ -44,14 +44,14 @@ export default function AdminLoginPage() {
       <div className="max-w-md w-full mx-auto p-8">
         <div className="bg-gray-900/50 backdrop-blur border border-gray-800 rounded-xl p-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-white mb-2">Fenix Metal</h1>
+            <h1 className="text-3xl font-bold text-white mb-2">Phenix Ferronnier</h1>
             <p className="text-gray-400">Administration</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-300 mb-2">
-                Nom d'utilisateur
+                Nom d&apos;utilisateur
               </label>
               <input
                 id="username"

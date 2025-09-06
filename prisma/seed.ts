@@ -211,7 +211,7 @@ async function main() {
           titre: data.title,
           description: data.description,
           category: 'art',
-          images: data.images,
+          images: data.images, // Les images sont déjà juste les noms de fichiers
           createdAt: new Date(),
           updatedAt: new Date()
         }
@@ -230,7 +230,7 @@ async function main() {
           titre: data.title,
           description: data.description,
           category: 'amenagement',
-          images: data.images,
+          images: data.images, // Les images sont déjà juste les noms de fichiers
           createdAt: new Date(),
           updatedAt: new Date()
         }

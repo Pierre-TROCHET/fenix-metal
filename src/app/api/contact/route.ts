@@ -1,22 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '../../../lib/prisma';
 import { headers } from 'next/headers';
-
-// Fonction pour envoyer un email (simulation - à remplacer par un vrai service)
-async function sendEmail(to: string, subject: string, message: string, from: string) {
-  // Pour l'instant, on simule l'envoi d'email
-  // Dans un vrai projet, vous utiliseriez un service comme SendGrid, Resend, ou Nodemailer
-  console.log('📧 Email envoyé:');
-  console.log(`À: ${to}`);
-  console.log(`De: ${from}`);
-  console.log(`Sujet: ${subject}`);
-  console.log(`Message: ${message}`);
-  
-  // Simulation d'un délai d'envoi
-  await new Promise(resolve => setTimeout(resolve, 100));
-  
-  return { success: true };
-}
+import { sendEmail, generateContactEmailHTML, generateContactEmailText } from '../../../lib/email';
 
 // Fonction pour valider l'email
 function isValidEmail(email: string): boolean {
@@ -32,7 +17,7 @@ function isValidPhone(phone: string | null): boolean {
 }
 
 // Fonction pour détecter les bots (protection basique)
-function isBotRequest(userAgent: string | null, ipAddress: string | null): boolean {
+function isBotRequest(userAgent: string | null): boolean {
   if (!userAgent) return true;
   
   const botPatterns = [
@@ -50,7 +35,7 @@ export async function POST(request: NextRequest) {
     const ipAddress = headersList.get('x-forwarded-for') || headersList.get('x-real-ip') || 'unknown';
 
     // Protection anti-bot
-    if (isBotRequest(userAgent, ipAddress)) {
+    if (isBotRequest(userAgent)) {
       return NextResponse.json(
         { error: 'Requête non autorisée' },
         { status: 403 }
@@ -148,30 +133,33 @@ export async function POST(request: NextRequest) {
 
     // Préparer l'email
     const emailSubject = `Nouveau message de contact - ${sujet}`;
-    const emailMessage = `
-Nouveau message de contact reçu sur le site Fenix-metal :
+    const contactData = {
+      nom,
+      email,
+      telephone,
+      sujet,
+      message,
+      ipAddress,
+      contactId: contact.id
+    };
 
-Nom: ${nom}
-Email: ${email}
-Téléphone: ${telephone || 'Non renseigné'}
-Sujet: ${sujet}
-
-Message:
-${message}
-
----
-Message envoyé le ${new Date().toLocaleString('fr-FR')}
-IP: ${ipAddress}
-ID du contact: ${contact.id}
-    `.trim();
+    const emailHTML = generateContactEmailHTML(contactData);
+    const emailText = generateContactEmailText(contactData);
 
     // Envoyer l'email
-    const emailResult = await sendEmail(
-      emailConfig.email,
-      emailSubject,
-      emailMessage,
-      email
-    );
+    console.log('📧 Tentative d\'envoi d\'email en production...');
+    console.log('Email de destination:', emailConfig.email);
+    console.log('RESEND_API_KEY présente:', !!process.env.RESEND_API_KEY);
+    
+    const emailResult = await sendEmail({
+      to: emailConfig.email,
+      from: 'Phenix Ferronnier <onboarding@resend.dev>', // Utilise le domaine de test de Resend
+      subject: emailSubject,
+      html: emailHTML,
+      text: emailText
+    });
+    
+    console.log('📧 Résultat de l\'envoi d\'email:', emailResult);
 
     if (emailResult.success) {
       return NextResponse.json(

@@ -15,7 +15,6 @@ interface ContactMessage {
 }
 
 export default function MessagesPage() {
-  const { data: session } = useSession();
   const router = useRouter();
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [loading, setLoading] = useState(true);

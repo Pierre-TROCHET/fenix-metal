@@ -26,7 +26,6 @@ interface UploadedImage {
 }
 
 export default function ArtPage() {
-  const { data: session } = useSession();
   const router = useRouter();
   const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [loading, setLoading] = useState(true);
@@ -305,9 +304,9 @@ export default function ArtPage() {
               >
                 ← Retour au tableau de bord
               </button>
-              <h1 className="text-3xl font-bold text-white">Gestion des œuvres d'art</h1>
+              <h1 className="text-3xl font-bold text-white">Gestion des œuvres d&apos;art</h1>
               <p className="text-gray-400 mt-2">
-                {artworks.length} œuvre{artworks.length > 1 ? "s" : ""} d'art
+                {artworks.length} œuvre{artworks.length > 1 ? "s" : ""} d&apos;art
               </p>
             </div>
             <div className="flex gap-4">
@@ -483,7 +482,7 @@ export default function ArtPage() {
               <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 w-full max-w-md">
                 <h3 className="text-xl font-bold text-white mb-4">Confirmer la suppression</h3>
                 <p className="text-gray-300 mb-6">
-                  Êtes-vous sûr de vouloir supprimer cette œuvre d'art ? Cette action est irréversible.
+                  Êtes-vous sûr de vouloir supprimer cette œuvre d&apos;art ? Cette action est irréversible.
                 </p>
                 <div className="flex gap-4">
                   <button
@@ -509,7 +508,7 @@ export default function ArtPage() {
           {/* Artworks list */}
           {artworks.length === 0 ? (
             <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-8 text-center">
-              <p className="text-gray-400 text-lg">Aucune œuvre d'art pour le moment.</p>
+              <p className="text-gray-400 text-lg">Aucune œuvre d&apos;art pour le moment.</p>
             </div>
           ) : (
             <div className="space-y-6">

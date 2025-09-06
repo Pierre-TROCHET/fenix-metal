@@ -21,6 +21,7 @@ export const authOptions: NextAuthOptions = {
           return {
             id: "1",
             name: "Admin",
+            email: "admin@phenix-ferronnier.com",
           };
         }
 

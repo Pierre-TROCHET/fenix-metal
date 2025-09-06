@@ -75,7 +75,7 @@ export default function ContactForm({ csrfToken }: ContactFormProps) {
           message: result.error || 'Une erreur est survenue'
         });
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         type: 'error',
         message: 'Erreur de connexion. Veuillez réessayer.'

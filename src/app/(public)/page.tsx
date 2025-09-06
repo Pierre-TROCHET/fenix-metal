@@ -12,14 +12,14 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Contenu texte */}
             <div className="max-w-3xl">
-              <span className="inline-block rounded-full border border-gray-700/70 bg-gray-900/40 px-3 py-1 text-xs tracking-widest text-gray-400">FERRONNIER D'ART</span>
+              <span className="inline-block rounded-full border border-gray-700/70 bg-gray-900/40 px-3 py-1 text-xs tracking-widest text-gray-400">FERRONNIER D&apos;ART</span>
               <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                <span className="bg-clip-text text-transparent bg-[linear-gradient(180deg,#e5e7eb_0%,#cdd0d5_45%,#aeb3bb_60%,#9aa1aa_100%)] drop-shadow">Fenix Metal</span>
+                <span className="bg-clip-text text-transparent bg-[linear-gradient(180deg,#e5e7eb_0%,#cdd0d5_45%,#aeb3bb_60%,#9aa1aa_100%)] drop-shadow">Phenix Ferronnier</span>
               </h1>
               <p className="mt-5 max-w-2xl text-lg text-gray-300 sm:text-xl">
               Bienvenue dans mon atelier,<br/>
-Je m'appelle Pablo Kofteci j'ai 30 d'expérience dans la ferronnerie. <br/>
-Je réalise vos aménagements métalliques: clôtures, portails, fenêtres, décorations, etc. J'effectue aussi la pose.
+Je m&apos;appelle Pablo Kofteci j&apos;ai 30 d&apos;expérience dans la ferronnerie. <br/>
+Je réalise vos aménagements métalliques: clôtures, portails, fenêtres, décorations, etc. J&apos;effectue aussi la pose.
 Je réalise ce dont vous avez besoin sur commande.<br/>
 Vous trouverez sur mon site  une partie de mes réalisations. Je me déplace dans un rayon de 40 km autour de Melun.
               </p>
@@ -44,7 +44,7 @@ Vous trouverez sur mon site  une partie de mes réalisations. Je me déplace dan
               <div className="absolute inset-0 rounded-xl overflow-hidden border border-gray-800/50 bg-gradient-to-b from-gray-900/20 to-black/40">
                 <Image
                   src="/accueil.jpg"
-                  alt="Fenix-metal - Créations en fer forgé"
+                  alt="Phenix Ferronnier - Créations en fer forgé"
                   fill
                   className="object-cover opacity-90"
                   priority
@@ -60,7 +60,7 @@ Vous trouverez sur mon site  une partie de mes réalisations. Je me déplace dan
       <section className="border-t border-gray-800 bg-gray-950/60">
         <div className="container mx-auto px-6 py-10 sm:py-12">
           <p className="text-center text-xs text-gray-500">
-            Acier, feu et précision — créations Fenix-metal.
+            Acier, feu et précision — créations Phenix Ferronnier.
           </p>
         </div>
       </section>

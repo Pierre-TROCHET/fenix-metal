@@ -84,7 +84,7 @@ export default function ImageCarousel({ images, title, folder }: ImageCarouselPr
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [nextImage, prevImage]);
 
   if (!images || images.length === 0) {
     return (
