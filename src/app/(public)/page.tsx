@@ -17,11 +17,11 @@ export default function Home() {
                 <span className="bg-clip-text text-transparent bg-[linear-gradient(180deg,#e5e7eb_0%,#cdd0d5_45%,#aeb3bb_60%,#9aa1aa_100%)] drop-shadow">Phenix Ferronnerie</span>
               </h1>
               <p className="mt-1 max-w-2xl text-sm sm:text-base lg:text-lg xl:text-xl text-gray-300 leading-relaxed">
-              Bienvenue dans mon atelier,<br/>
-Je m&apos;appelle Pablo Kofteci j&apos;ai 30 d&apos;expérience dans la ferronnerie. <br/>
-Je réalise vos aménagements métalliques: clôtures, portails, fenêtres, décorations, etc. J&apos;effectue aussi la pose.
-Je réalise ce dont vous avez besoin sur commande.<br/>
-Vous trouverez sur mon site  une partie de mes réalisations. Je me déplace jusqu'à 50 km autour de Paris.
+              <strong>Ferronnier d'art à Paris et Île-de-France</strong><br/>
+              Je m&apos;appelle Pablo Kofteci, j&apos;ai 30 ans d&apos;expérience dans la ferronnerie d'art. <br/>
+              Je réalise vos aménagements métalliques sur mesure : <strong>portails fer forgé, escaliers, rambardes, marquises, barreaux de fenêtres</strong> et décorations métalliques. J&apos;effectue aussi la pose.<br/>
+              Spécialisé dans les créations artistiques en fer forgé, je travaille sur commande selon vos besoins.<br/>
+              Vous trouverez sur mon site une partie de mes réalisations. <strong>Je me déplace dans tout l'Île-de-France : Paris, Seine-et-Marne (77), Yvelines (78), Essonne (91), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94), Val-d'Oise (95).</strong>
               </p>
               <div className="mt-3 sm:mt-4 flex flex-wrap gap-2 sm:gap-3">
                 <Link
