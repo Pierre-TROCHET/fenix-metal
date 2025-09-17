@@ -10,7 +10,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 border-b border-gray-800/80 bg-black/70 backdrop-blur supports-[backdrop-filter]:bg-black/50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="text-gray-100 font-extrabold tracking-wide text-lg">
-          Phenix Ferronnier
+          Phenix Ferronnerie
         </Link>
 
         {/* Desktop nav */}

@@ -50,6 +50,41 @@ export default function ContactPage() {
                 </p>
               </div>
 
+              {/* Informations de contact */}
+              <div className="mt-8 p-6 bg-gray-950/60 rounded-xl border border-gray-800">
+                <h3 className="text-lg font-semibold text-gray-100 mb-4">
+                  Contact direct
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-orange-600/20 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-400">Email</p>
+                      <a href="mailto:aslantaskin16@gmail.com" className="text-orange-400 hover:text-orange-300 transition-colors">
+                        aslantaskin16@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-orange-600/20 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-400">Téléphone</p>
+                      <a href="tel:0758822076" className="text-orange-400 hover:text-orange-300 transition-colors">
+                        07 58 82 20 76
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Types de projets */}
               <div className="mt-8 p-6 bg-gray-950/60 rounded-xl border border-gray-800">
                 <h3 className="text-lg font-semibold text-gray-100 mb-4">

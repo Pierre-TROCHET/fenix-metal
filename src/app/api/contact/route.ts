@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
     
     const emailResult = await sendEmail({
       to: emailConfig.email,
-      from: 'Phenix Ferronnier <onboarding@resend.dev>', // Utilise le domaine de test de Resend
+      from: 'Phenix Ferronnerie <onboarding@resend.dev>', // Utilise le domaine de test de Resend
       subject: emailSubject,
       html: emailHTML,
       text: emailText

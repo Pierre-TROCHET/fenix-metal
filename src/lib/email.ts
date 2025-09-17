@@ -130,7 +130,7 @@ export function generateContactEmailText(contactData: {
   contactId: number;
 }) {
   return `
-NOUVEAU MESSAGE DE CONTACT - FENIX METAL
+NOUVEAU MESSAGE DE CONTACT - Phenix Ferronnerie
 
 Nom: ${contactData.nom}
 Email: ${contactData.email}
@@ -144,6 +144,6 @@ ${contactData.message}
 Message reçu le ${new Date().toLocaleString('fr-FR')}
 IP: ${contactData.ipAddress}
 ID du contact: ${contactData.contactId}
-Envoyé depuis le site web Fenix Metal
+Envoyé depuis le site web Phenix Ferronnerie
   `.trim();
 }
