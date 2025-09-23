@@ -1,6 +1,4 @@
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import nodemailer from 'nodemailer';
 
 export interface EmailData {
   to: string;
@@ -12,36 +10,49 @@ export interface EmailData {
 
 export async function sendEmail({ to, from, subject, html, text }: EmailData) {
   try {
-    console.log('📧 Tentative d\'envoi d\'email via Resend...');
+    console.log('📧 Tentative d\'envoi d\'email via Nodemailer...');
     console.log(`À: ${to}`);
     console.log(`De: ${from}`);
     console.log(`Sujet: ${subject}`);
-    console.log(`RESEND_API_KEY configurée: ${!!process.env.RESEND_API_KEY}`);
+    console.log(`SMTP_HOST configuré: ${!!process.env.SMTP_HOST}`);
+    console.log(`SMTP_PORT configuré: ${!!process.env.SMTP_PORT}`);
+    console.log(`SMTP_USER configuré: ${!!process.env.SMTP_USER}`);
+    console.log(`SMTP_PASS configuré: ${!!process.env.SMTP_PASS}`);
 
-    if (!process.env.RESEND_API_KEY) {
-      console.warn('⚠️ RESEND_API_KEY non configurée, simulation de l\'envoi d\'email');
+    if (!process.env.SMTP_HOST || !process.env.SMTP_PORT || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.warn('⚠️ Variables SMTP non configurées, simulation de l\'envoi d\'email');
       console.log('📧 Email simulé:');
       console.log(`Contenu: ${text || html}`);
       return { success: true, id: 'simulated-' + Date.now() };
     }
 
-    const { data, error } = await resend.emails.send({
-      from: from,
-      to: [to],
-      subject: subject,
-      html: html,
-      text: text,
+    // Configuration du transporteur SMTP
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT),
+      secure: process.env.SMTP_PORT === '465', // true pour 465, false pour autres ports
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
     });
 
-    if (error) {
-      console.error('❌ Erreur Resend détaillée:', JSON.stringify(error, null, 2));
-      return { success: false, error: error.message || 'Erreur inconnue de Resend' };
-    }
+    // Configuration de l'email
+    const mailOptions = {
+      from: from,
+      to: to,
+      subject: subject,
+      html: html,
+      text: text || html,
+    };
 
-    console.log('✅ Email envoyé avec succès:', data?.id);
-    return { success: true, id: data?.id };
+    // Envoi de l'email
+    const info = await transporter.sendMail(mailOptions);
+    
+    console.log('✅ Email envoyé avec succès via Nodemailer:', info.messageId);
+    return { success: true, id: info.messageId };
   } catch (error) {
-    console.error('❌ Erreur lors de l\'envoi de l\'email:', error);
+    console.error('❌ Erreur lors de l\'envoi de l\'email via Nodemailer:', error);
     return { success: false, error: error instanceof Error ? error.message : 'Erreur inconnue lors de l\'envoi' };
   }
 }
@@ -76,7 +87,7 @@ export function generateContactEmailHTML(contactData: {
     <body>
       <div class="container">
         <div class="header">
-          <h1>🔨 Fenix Metal</h1>
+          <h1>🔨 Phenix Ferronnerie</h1>
           <h2>Nouveau message de contact</h2>
         </div>
         
@@ -112,7 +123,7 @@ export function generateContactEmailHTML(contactData: {
         <div class="footer">
           <p>Message reçu le ${new Date().toLocaleString('fr-FR')}</p>
           <p>IP: ${contactData.ipAddress} | ID: ${contactData.contactId}</p>
-          <p>Envoyé depuis le site web Fenix Metal</p>
+          <p>Envoyé depuis le site web Phenix Ferronnerie</p>
         </div>
       </div>
     </body>

@@ -149,11 +149,14 @@ export async function POST(request: NextRequest) {
     // Envoyer l'email
     console.log('📧 Tentative d\'envoi d\'email en production...');
     console.log('Email de destination:', emailConfig.email);
-    console.log('RESEND_API_KEY présente:', !!process.env.RESEND_API_KEY);
+    console.log('SMTP_HOST présent:', !!process.env.SMTP_HOST);
+    console.log('SMTP_PORT présent:', !!process.env.SMTP_PORT);
+    console.log('SMTP_USER présent:', !!process.env.SMTP_USER);
+    console.log('SMTP_PASS présent:', !!process.env.SMTP_PASS);
     
     const emailResult = await sendEmail({
       to: emailConfig.email,
-      from: 'Phenix Ferronnerie <onboarding@resend.dev>', // Utilise le domaine de test de Resend
+      from: emailConfig.email, 
       subject: emailSubject,
       html: emailHTML,
       text: emailText
