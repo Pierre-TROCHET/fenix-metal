@@ -156,7 +156,7 @@ export async function POST(request: NextRequest) {
     
     const emailResult = await sendEmail({
       to: emailConfig.email,
-      from: emailConfig.email, 
+      from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || emailConfig.email, // Utiliser l'adresse d'expéditeur configurée
       subject: emailSubject,
       html: emailHTML,
       text: emailText

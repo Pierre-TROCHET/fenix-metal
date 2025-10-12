@@ -53,6 +53,40 @@ export async function sendEmail({ to, from, subject, html, text }: EmailData) {
     return { success: true, id: info.messageId };
   } catch (error) {
     console.error('❌ Erreur lors de l\'envoi de l\'email via Nodemailer:', error);
+    
+    // Gestion spécifique des erreurs SMTP
+    if (error instanceof Error) {
+      const errorMessage = error.message.toLowerCase();
+      
+      if (errorMessage.includes('550') || errorMessage.includes('does not exist')) {
+        return { 
+          success: false, 
+          error: 'Adresse email introuvable. Vérifiez que l\'adresse email du destinataire est correcte.' 
+        };
+      }
+      
+      if (errorMessage.includes('553') || errorMessage.includes('mailbox unavailable')) {
+        return { 
+          success: false, 
+          error: 'Boîte mail indisponible. Le destinataire ne peut pas recevoir d\'emails.' 
+        };
+      }
+      
+      if (errorMessage.includes('554') || errorMessage.includes('rejected')) {
+        return { 
+          success: false, 
+          error: 'Email rejeté par le serveur de destination.' 
+        };
+      }
+      
+      if (errorMessage.includes('authentication') || errorMessage.includes('login')) {
+        return { 
+          success: false, 
+          error: 'Erreur d\'authentification SMTP. Vérifiez vos identifiants.' 
+        };
+      }
+    }
+    
     return { success: false, error: error instanceof Error ? error.message : 'Erreur inconnue lors de l\'envoi' };
   }
 }
